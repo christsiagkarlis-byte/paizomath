@@ -495,3 +495,40 @@ html:has(.intro-page),body:has(.intro-page){overflow:hidden}
 @media (max-width:1100px){.intro-stage:has(.detailed-topic-list){grid-template-columns:minmax(0,.55fr) minmax(0,1.45fr)}.detailed-topic-list{grid-template-columns:repeat(3,minmax(0,1fr))}.intro-copy>h1{font-size:clamp(27px,4.4vw,52px)}}
 @media (max-width:760px){.intro-stage{display:block}.intro-image{display:none}.intro-copy>h1{font-size:clamp(27px,8.4vw,42px);line-height:.95}.intro-copy>p{font-size:12px;line-height:1.3}.detailed-topic-list{grid-template-columns:repeat(2,minmax(0,1fr));gap:5px}.detailed-topic-list article{padding:5px}.detailed-topic-list b{font-size:9px}.detailed-topic-list small{font-size:7.5px}.intro-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px}.intro-actions .button{min-height:40px;padding:0 8px;font-size:11px}}
 @media (max-width:390px){.intro-main{padding-right:11px;padding-left:11px}.intro-copy>h1{font-size:26px}.intro-copy>p{font-size:11px}.detailed-topic-list{gap:4px}.detailed-topic-list article{grid-template-columns:19px minmax(0,1fr);gap:4px;padding:4px}.detailed-topic-list .intro-topic-number{width:19px;height:19px;font-size:8px!important}.detailed-topic-list b{font-size:8px}.detailed-topic-list small{font-size:7px}.intro-actions .button{font-size:10px}}
+
+/* Mobile/tablet fix: first-aid guidance must use the full card width. */
+@media (max-width:900px){
+  .first-aid-notice{grid-template-columns:minmax(0,1fr)!important;gap:8px!important;width:100%;}
+  .first-aid-notice b{width:max-content!important;min-width:0!important;padding:0 9px;}
+  .first-aid-notice span{min-width:0;overflow-wrap:anywhere;}
+}
+
+/* Final support stage: larger scan-friendly QR with a single mobile/tablet column. */
+@media (max-width:900px){
+  .intro-page-support .intro-support-single{grid-template-columns:minmax(0,1fr)!important;gap:10px!important;padding:12px!important;}
+  .intro-support-single .intro-qr-column{display:grid;grid-template-columns:1fr;justify-items:center;gap:6px;text-align:center;}
+  .intro-support-single .intro-qr-column img{width:clamp(148px,46vw,190px)!important;max-width:100%;height:auto;}
+  .intro-support-single .support-message-once{width:100%;}
+}
+@media (max-width:390px){
+  .intro-support-single .intro-qr-column img{width:clamp(140px,45vw,172px)!important;}
+}
+
+/* Final responsive guard: never leave first-aid guidance in an unusably narrow grid column. */
+@media (max-width:1100px){
+  .first-aid-notice{
+    grid-template-columns:minmax(0,1fr)!important;
+    gap:8px!important;
+  }
+  .first-aid-notice b{width:max-content!important;min-width:0!important;padding:0 9px;}
+  .first-aid-notice span{min-width:0;overflow-wrap:anywhere;}
+}
+
+/* Medium tablet final stage: improve QR scan size while keeping the layout bounded. */
+@media (min-width:901px) and (max-width:1100px){
+  .intro-page-support .intro-support-single{
+    grid-template-columns:150px minmax(0,1fr)!important;
+    gap:14px!important;
+  }
+  .intro-support-single .intro-qr-column img{width:146px!important;height:auto;}
+}

@@ -1,0 +1,68 @@
+name: Validate and deploy PaizoMath to GitHub Pages
+
+on:
+  push:
+    branches: [main, master]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    name: Validate portable website package
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Require root legal and entry files
+        run: |
+          set -euo pipefail
+          for file in LICENSE README.md terms.html index.html; do
+            test -f "$file" || { echo "Missing required root file: $file"; exit 1; }
+          done
+          grep -Fq "MIT License" LICENSE
+          grep -Fq "PaizoMath" README.md
+          grep -Fq "αποποίηση" README.md
+          grep -Fq "© Ευρωπαϊκή Ένωση, CC BY 4.0" terms.html
+          grep -Fq "ΜΟΝΟ σε πραγματική έκτακτη ανάγκη" terms.html
+
+      - name: Block Android binaries and signing files from public Pages output
+        run: |
+          set -euo pipefail
+          if find . -type f \( -iname '*.apk' -o -iname '*.aab' -o -iname '*.jks' -o -iname '*.keystore' \) -print -quit | grep -q .; then
+            echo "Android binary or signing file detected. These must never be deployed with the public website."
+            exit 1
+          fi
+
+      - name: Require portable static application files
+        run: |
+          set -euo pipefail
+          for file in css/styles.css css/terms.css css/intro-topics.css js/app.js sw.js manifest.webmanifest; do
+            test -f "$file" || { echo "Missing portable website file: $file"; exit 1; }
+          done
+          grep -Fq "terms.html" README.md
+
+      - name: Upload checked Pages artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: .
+
+  deploy:
+    name: Deploy GitHub Pages
+    needs: validate
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy checked artifact
+        id: deployment
+        uses: actions/deploy-pages@v4

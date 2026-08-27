@@ -30,3 +30,80 @@
 
 /* Parent privacy controls: clear warning color, accessible contrast, and touch-friendly actions. */
 .delete-data-box{border:1px solid #efb8ae;background:#fff3ef}.delete-data-box h3{color:#8e3328}.delete-data-box .button.danger{color:#fff;background:#b84635;border-color:#963526;box-shadow:0 4px 0 #7d2c21}.delete-data-box .button.danger:hover{background:#d0523e}.delete-data-box .form-message{min-height:1.4em}.terms-link{font-weight:900;text-underline-offset:3px}
+
+/* PaizoMath contact fields: identical visible white controls for Name and Email on every viewport. */
+.contact-form label input#contact-name,
+.contact-form label input#contact-email {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  min-height: 46px;
+  box-sizing: border-box;
+  appearance: none;
+  -webkit-appearance: none;
+  color: #174950;
+  background-color: #fffefb;
+  border: 2px solid #b9dfd1;
+  border-radius: 10px;
+  opacity: 1;
+  visibility: visible;
+}
+.contact-form label input#contact-name:focus,
+.contact-form label input#contact-email:focus {
+  background-color: #ffffff;
+  border-color: #67aa94;
+}
+
+/* PaizoMath terms footer: keep the heading on its own full-width block above the privacy paragraph. */
+.public-footer {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: start;
+  justify-items: start;
+  gap: 10px;
+}
+.public-footer > a {
+  display: block;
+  width: 100%;
+  line-height: 1.3;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+.public-footer .privacy-footer-note {
+  display: block;
+  width: 100%;
+  max-width: 980px;
+  line-height: 1.55;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+@media (max-width: 620px) {
+  .public-footer {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 9px;
+  }
+}
+
+/* PaizoMath automatic update notice: visible but non-blocking, with no child-game controls. */
+.paizomath-update-banner {
+  position: fixed;
+  z-index: 40;
+  right: max(14px, env(safe-area-inset-right));
+  bottom: max(14px, env(safe-area-inset-bottom));
+  width: min(420px, calc(100vw - 28px));
+  padding: 12px 15px;
+  border: 1px solid #9fd8c3;
+  border-radius: 14px;
+  color: #155c56;
+  background: #effcf4;
+  box-shadow: 0 8px 24px rgba(28, 84, 70, .18);
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1.45;
+  pointer-events: none;
+}
+.paizomath-update-banner[hidden] { display: none; }
+.paizomath-update-banner.is-playing { bottom: max(84px, calc(14px + env(safe-area-inset-bottom))); }
+.refresh-data-box { display: none !important; }
+@media (prefers-reduced-motion: reduce) { .paizomath-update-banner { transition: none; } }
