@@ -1,0 +1,9 @@
+{
+  "name": "Παίζω και Μαθαίνω",
+  "short_name": "PaizoMath",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#fffaf0",
+  "theme_color": "#164b52",
+  "icons": [{ "src": "images/paizo-logo.png", "sizes": "any", "type": "image/png" }]
+}
