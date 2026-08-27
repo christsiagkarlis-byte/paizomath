@@ -49,7 +49,7 @@
 }
 
 .intro-support-panel {
-  grid-template-columns: 156px minmax(0, 1fr);
+  grid-template-columns: 122px minmax(0, 1fr);
   gap: 16px;
   align-items: stretch;
   margin: 12px 0 8px;
@@ -69,7 +69,7 @@
 }
 
 .intro-support-panel .intro-qr-column img {
-  width: min(100%, 148px);
+  width: min(100%, 112px);
   max-width: none;
   margin: 0;
   padding: 8px;
@@ -141,6 +141,38 @@
   line-height: 1.35 !important;
 }
 
+/* Final presentation stage: one concise message that fits without internal scrolling. */
+.intro-support-single {
+  align-items: center;
+  min-height: 0;
+}
+
+.support-message-once {
+  padding: 16px 18px;
+  border: 1px solid #c2ded4;
+  border-radius: 13px;
+  color: #2e5658;
+  background: #fff;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.9);
+}
+
+.support-message-once p {
+  margin: 0 !important;
+  color: #2e5658 !important;
+  font-size: clamp(13px, 1.6vw, 16px) !important;
+  font-weight: 680;
+  line-height: 1.55 !important;
+  opacity: 1 !important;
+}
+
+.support-message-once p:first-child {
+  margin-bottom: 9px !important;
+  color: #1d6761 !important;
+  font-size: clamp(19px, 2.2vw, 26px) !important;
+  font-weight: 900;
+  line-height: 1.18 !important;
+}
+
 .support-scroll-copy .privacy-inline {
   margin-bottom: 0 !important;
   padding-top: 10px;
@@ -204,15 +236,18 @@
 @media (max-width: 620px) {
   .intro-main { padding-right: 16px; padding-left: 16px; }
   .intro-page-support .intro-copy > h1 { font-size: 34px; }
-  .intro-support-panel { grid-template-columns: 1fr; gap: 13px; padding: 13px; }
-  .intro-qr-column { display: grid; grid-template-columns: 94px 1fr; column-gap: 12px; text-align: left; }
-  .intro-support-panel .intro-qr-column img { grid-row: span 2; width: 94px; }
+  .intro-support-panel { grid-template-columns: 1fr; gap: 11px; padding: 12px; }
+  .intro-qr-column { display: grid; grid-template-columns: 82px 1fr; column-gap: 11px; text-align: left; }
+  .intro-support-panel .intro-qr-column img { grid-row: span 2; width: 82px; }
   .intro-qr-column strong { align-self: end; font-size: 13px; }
   .intro-qr-column small { align-self: start; font-size: 10px; }
   .intro-support-copy { font-size: 13px; }
   .support-scroll-copy { min-height: 154px; max-height: min(33dvh, 270px); padding: 12px; }
   .support-scroll-copy p { font-size: 13px !important; }
   .support-scroll-copy p:first-child { font-size: 17px !important; }
+  .support-message-once { padding: 13px; }
+  .support-message-once p { font-size: 13px !important; line-height: 1.45 !important; }
+  .support-message-once p:first-child { margin-bottom: 7px !important; font-size: 19px !important; }
   .intro-page-support .intro-actions {
     display: grid;
     grid-template-columns: 1fr;
@@ -384,4 +419,56 @@
 @media (max-width: 700px) {
   .social-share { grid-template-columns: 1fr; margin: 24px 18px 86px; padding: 18px; }
   .social-share-links { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* Compact final support stage: the entire voluntary PayPal message is visible at once. */
+.intro-page-support .intro-support-single {
+  display: grid;
+  grid-template-columns: 104px minmax(0, 1fr);
+  align-items: center;
+  gap: 13px;
+  margin: 9px 0 6px;
+  padding: 12px;
+}
+
+.intro-support-single .intro-qr-column {
+  display: block;
+  text-align: center;
+}
+
+.intro-support-single .intro-qr-column img {
+  display: block;
+  width: 100px;
+  margin: 0 auto;
+  padding: 5px;
+}
+
+.intro-support-single .intro-qr-column strong,
+.intro-support-single .intro-qr-column small { display: none; }
+
+.intro-support-single .support-message-once {
+  padding: 12px 13px;
+}
+
+.intro-support-single .support-message-once p {
+  font-size: clamp(12px, 1.4vw, 14px) !important;
+  line-height: 1.42 !important;
+}
+
+.intro-support-single .support-message-once p:first-child {
+  margin-bottom: 6px !important;
+  font-size: clamp(18px, 2vw, 23px) !important;
+}
+
+@media (max-width: 620px) {
+  .intro-page-support .intro-support-single {
+    grid-template-columns: 84px minmax(0, 1fr);
+    gap: 10px;
+    margin: 7px 0 3px;
+    padding: 10px;
+  }
+  .intro-support-single .intro-qr-column img { width: 80px; }
+  .intro-support-single .support-message-once { padding: 10px 11px; }
+  .intro-support-single .support-message-once p { font-size: 12px !important; line-height: 1.36 !important; }
+  .intro-support-single .support-message-once p:first-child { margin-bottom: 5px !important; font-size: 17px !important; }
 }
