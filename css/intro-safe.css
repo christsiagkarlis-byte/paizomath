@@ -226,3 +226,117 @@
   .intro-page-support .intro-image { display: none; }
   .support-scroll-copy { max-height: 32dvh; }
 }
+
+/* Home support: the voluntary PayPal note and privacy notice stay visually equal and separate. */
+.support-section-complete {
+  grid-template-columns: minmax(0, 1fr) 190px;
+  align-items: stretch;
+  gap: 28px;
+}
+
+.home-support-copy {
+  min-width: 0;
+}
+
+.support-section-complete h2 {
+  margin: 7px 0 15px;
+}
+
+.support-section-complete .support-message-section,
+.support-section-complete .privacy-support-section {
+  padding: 16px 18px;
+  border-radius: 15px;
+}
+
+.support-section-complete .support-message-section {
+  border: 1px solid rgba(169, 221, 204, .43);
+  color: #e9faf1;
+  background: rgba(255, 255, 255, .09);
+}
+
+.support-section-complete .support-message-section p {
+  margin: 0;
+  color: #e6f6ed;
+  font-size: 14px;
+  font-weight: 650;
+  line-height: 1.6;
+}
+
+.support-section-complete .support-message-section p:first-child {
+  margin-bottom: 9px;
+  color: #fff7cf;
+  font-size: 20px;
+  line-height: 1.25;
+}
+
+.support-section-complete .privacy-support-section {
+  margin-top: 12px;
+  border: 1px solid rgba(245, 210, 124, .4);
+  color: #edf6ed;
+  background: rgba(0, 0, 0, .12);
+}
+
+.support-section-complete .privacy-support-section h3 {
+  margin: 0 0 6px;
+  color: #f5d87a;
+  font-size: 13px;
+}
+
+.support-section-complete .privacy-support-section p {
+  margin: 0;
+  color: #e2f2e9;
+  font-size: 12px;
+  font-weight: 650;
+  line-height: 1.55;
+}
+
+.home-support-qr {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  text-align: center;
+}
+
+.support-section-complete .home-support-qr img {
+  width: 162px;
+  margin: 0;
+}
+
+.home-support-qr small {
+  color: #d7e9df;
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.home-support-open {
+  color: #fff8d5;
+  font-size: 11px;
+}
+
+@media (max-width: 620px) {
+  .support-section-complete {
+    grid-template-columns: 1fr;
+    gap: 17px;
+  }
+  .support-section-complete .support-message-section,
+  .support-section-complete .privacy-support-section {
+    padding: 14px;
+  }
+  .support-section-complete .support-message-section p {
+    font-size: 13px;
+  }
+  .support-section-complete .support-message-section p:first-child {
+    font-size: 18px;
+  }
+  .home-support-qr {
+    display: grid;
+    grid-template-columns: 116px minmax(0, 1fr);
+    justify-items: start;
+    align-items: center;
+    text-align: left;
+  }
+  .support-section-complete .home-support-qr img { grid-row: span 2; width: 116px; }
+  .home-support-open { text-align: left; }
+}
