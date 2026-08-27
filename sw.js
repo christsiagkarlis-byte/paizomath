@@ -1,6 +1,6 @@
 const CACHE = "paizomath-portable-v1";
-const CACHE = "paizomath-portable-v6";
-const CORE = ["./", "./index.html", "./css/styles.css", "./css/terms.css", "./js/app.js", "./manifest.webmanifest", "./audio/paizomath-presentation-bed.mp3"];
+const CACHE = "paizomath-portable-v7";
+const CORE = ["./", "./index.html", "./css/styles.css", "./css/terms.css", "./css/intro-topics.css", "./js/app.js", "./manifest.webmanifest", "./audio/paizomath-presentation-bed.mp3"];
 self.addEventListener("install", event => event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(CORE))));
 self.addEventListener("activate", event => event.waitUntil(self.clients.claim()));
 self.addEventListener("fetch", event => {

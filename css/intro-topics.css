@@ -1,0 +1,9 @@
+/* PaizoMath 60″ presentation: compact topic map, cream-paper clarity and mobile-first reading. */
+.intro-topic-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin:15px 0;color:#193f47}
+.intro-topic-list section{min-width:0;padding:10px;border:1px solid rgba(148,206,193,.72);border-radius:13px;background:rgba(242,253,249,.95)}
+.intro-topic-list section>b{display:block;margin-bottom:7px;color:#287565;font-size:10px;font-weight:900;letter-spacing:.06em;text-transform:uppercase}
+.intro-topic-list section>div{display:grid;gap:4px}
+.intro-topic-list span{overflow:hidden;padding:4px 6px;border-radius:7px;background:#fffdf7;color:#285550;font-size:10px;font-weight:800;line-height:1.18;text-overflow:ellipsis;white-space:nowrap}
+@media (max-width:760px){.intro-topic-list{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;margin:11px 0}.intro-topic-list section{padding:8px}.intro-topic-list section>b{margin-bottom:5px;font-size:9px}.intro-topic-list span{padding:3px 5px;font-size:9px}}
+@media (max-width:390px){.intro-topic-list{grid-template-columns:1fr 1fr}.intro-topic-list span{font-size:8px}}
+.emergency-warning{margin:12px 0 8px!important;padding:10px 11px;border:1px solid #efc08f;border-radius:11px;color:#8a4027!important;background:#fff0df;font-size:12px!important;line-height:1.45!important}.ec-112-credit{display:block;margin:8px 0;color:#536d68;font-size:10px;line-height:1.4}.first-aid-notice .emergency-warning{margin:10px 0 0!important;background:#fff8e9}@media (max-width:620px){.emergency-warning{padding:9px 10px;font-size:11px!important}.ec-112-credit{font-size:9px}}
