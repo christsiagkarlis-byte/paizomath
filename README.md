@@ -21,7 +21,7 @@
 1. Δημιουργήστε ή ανοίξτε ένα GitHub repository.
 2. Αποσυμπιέστε **τα περιεχόμενα** αυτού του ZIP στη ρίζα του repository.
 3. Κάντε commit και push στο `main` (ή στο `master`).
-4. Στο repository, ανοίξτε **Settings → Pages** και επιλέξτε ως Source το **GitHub Actions**.
+4. Στο repository, ανοίξτε **Settings → Pages** και επιλέξτε ως Source το **GitHub Actions**. Μην επιλέξετε «Deploy from a branch»: αυτή η ρύθμιση εκκινεί το παλιό «Build with Jekyll» και μπορεί να δημοσιεύσει τα παλιά αρχεία αντί για αυτό το πακέτο.
 5. Ανοίξτε την καρτέλα **Actions** για να δείτε το επιτυχές deployment και έπειτα το Pages URL.
 
 Το `terms.html` είναι αυτόνομη σελίδα και είναι προσβάσιμο ως:
