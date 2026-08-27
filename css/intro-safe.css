@@ -340,3 +340,48 @@
   .support-section-complete .home-support-qr img { grid-row: span 2; width: 116px; }
   .home-support-open { text-align: left; }
 }
+
+/* Public and parent sharing: textual marks avoid using third-party social logos. */
+.social-share {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, .95fr);
+  gap: 24px;
+  max-width: 1120px;
+  margin: 26px auto 56px;
+  padding: 24px;
+  border: 1px solid #d7e4dc;
+  border-radius: 20px;
+  background: #f6faf6;
+  color: #1e4540;
+}
+
+.social-share h2 { margin: 7px 0 8px; font-size: clamp(22px, 3vw, 34px); }
+.social-share p { margin: 0; color: #54716b; font-size: 13px; font-weight: 650; line-height: 1.55; }
+.social-share-links { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 9px; }
+
+.share-link {
+  display: inline-flex;
+  min-height: 46px;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  border: 1px solid #c9ded5;
+  border-radius: 10px;
+  color: #214d47;
+  background: #fff;
+  font-size: 12px;
+  font-weight: 850;
+  text-decoration: none;
+  transition: transform 160ms cubic-bezier(.23,1,.32,1), border-color 160ms ease, box-shadow 160ms ease;
+}
+
+.share-link:hover,
+.share-link:focus-visible { transform: translateY(-2px); border-color: #67aa92; box-shadow: 0 8px 18px rgba(45, 105, 86, .15); }
+.share-link:active { transform: scale(.97); }
+.share-link b { min-width: 18px; text-align: center; color: #dd614c; font-size: 13px; }
+.social-share-parent { margin: 26px auto 30px; }
+
+@media (max-width: 700px) {
+  .social-share { grid-template-columns: 1fr; margin: 24px 18px 86px; padding: 18px; }
+  .social-share-links { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
