@@ -1,4 +1,4 @@
-const CACHE = "paizomath-portable-v21";
+const CACHE = "paizomath-portable-v23";
 const CORE = ["./", "./index.html", "./terms.html", "./css/styles.css", "./css/terms.css", "./css/intro-topics.css", "./css/intro-safe.css", "./js/app.js", "./js/protection.js", "./js/update-manager.js", "./manifest.webmanifest", "./audio/paizomath-presentation-bed.mp3"];
 self.addEventListener("install", event => event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(CORE))));
 self.addEventListener("activate", event => event.waitUntil(self.clients.claim()));

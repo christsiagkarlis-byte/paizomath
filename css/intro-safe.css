@@ -532,3 +532,148 @@ html:has(.intro-page),body:has(.intro-page){overflow:hidden}
   }
   .intro-support-single .intro-qr-column img{width:146px!important;height:auto;}
 }
+
+/* Final PayPal stage layout: readable message first, large scan-friendly QR below. */
+.intro-page-support .intro-support-single {
+  grid-template-columns: minmax(0, 1fr);
+  gap: clamp(8px, 1.4vh, 14px);
+  align-items: stretch;
+}
+.intro-page-support .intro-support-single .intro-support-copy { order: 1; min-width: 0; }
+.intro-page-support .intro-support-single .intro-qr-column {
+  order: 2;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  justify-items: center;
+  gap: 3px;
+  min-width: 0;
+  text-align: center;
+}
+.intro-page-support .intro-support-single .intro-qr-column img {
+  width: clamp(190px, 28vh, 300px) !important;
+  max-width: min(76vw, 300px);
+  height: auto;
+  aspect-ratio: 1;
+  object-fit: contain;
+  padding: 7px;
+  background: #fff;
+}
+.intro-page-support .intro-support-single .support-message-once {
+  width: 100%;
+  padding: clamp(9px, 1.2vh, 14px) clamp(11px, 1.5vw, 18px);
+}
+.intro-page-support .intro-support-single .support-message-once p {
+  font-size: clamp(11px, 1.25vw, 14px) !important;
+  line-height: 1.32 !important;
+}
+.intro-page-support .intro-support-single .support-message-once p:first-child {
+  font-size: clamp(17px, 2vw, 24px) !important;
+  line-height: 1.1 !important;
+}
+@media (max-width: 760px) {
+  .intro-page-support .intro-support-single { gap: 7px; padding: 9px; }
+  .intro-page-support .intro-support-single .intro-qr-column img {
+    width: clamp(190px, 52vw, 260px) !important;
+    max-width: 80vw;
+  }
+  .intro-page-support .intro-support-single .support-message-once p {
+    font-size: clamp(10px, 3.1vw, 13px) !important;
+    line-height: 1.26 !important;
+  }
+  .intro-page-support .intro-support-single .support-message-once p:first-child {
+    font-size: clamp(16px, 5vw, 22px) !important;
+  }
+}
+@media (max-width: 390px) {
+  .intro-page-support .intro-support-single { gap: 5px; padding: 7px; }
+  .intro-page-support .intro-support-single .intro-qr-column img {
+    width: min(190px, 58vw) !important;
+    max-width: 78vw;
+    padding: 5px;
+  }
+  .intro-page-support .intro-support-single .support-message-once { padding: 7px 9px; }
+  .intro-page-support .intro-support-single .support-message-once p { font-size: 10px !important; line-height: 1.2 !important; }
+  .intro-page-support .intro-support-single .support-message-once p:first-child { font-size: 16px !important; }
+}
+
+/* One-screen presentation guard: content and navigation occupy separate, non-overlapping rows. */
+.intro-stage { min-height: 0; }
+.intro-stage > .intro-copy {
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+.intro-stage > .intro-copy > .intro-actions {
+  position: static !important;
+  flex: 0 0 auto;
+  margin-top: auto;
+  padding: clamp(6px, 1vh, 12px) 0 max(6px, env(safe-area-inset-bottom));
+  background: transparent;
+}
+.intro-stage > .intro-copy > .intro-actions .button { min-height: 42px; }
+.intro-stage:has(.detailed-topic-list) > .intro-copy {
+  display: grid;
+  grid-template-rows: auto auto auto minmax(0, 1fr) auto;
+  align-content: stretch;
+}
+.intro-stage:has(.detailed-topic-list) .detailed-topic-list {
+  min-height: 0;
+  overflow: hidden;
+  align-content: stretch;
+}
+.intro-stage:has(.detailed-topic-list) .detailed-topic-list article {
+  min-height: 0;
+  overflow: hidden;
+}
+@media (max-height: 820px) {
+  .intro-copy > h1 { margin-top: 4px; margin-bottom: 6px; }
+  .intro-copy > p { margin-bottom: 6px; }
+  .intro-stage:has(.detailed-topic-list) .detailed-topic-list { margin-top: 4px; margin-bottom: 4px; }
+  .intro-stage:has(.detailed-topic-list) .detailed-topic-list article { padding: 5px; }
+  .intro-stage > .intro-copy > .intro-actions { padding-top: 5px; }
+}
+@media (max-width: 760px) {
+  .intro-stage > .intro-copy > .intro-actions { padding-bottom: max(5px, env(safe-area-inset-bottom)); }
+  .intro-stage > .intro-copy > .intro-actions .button { min-height: 38px; }
+  .intro-stage:has(.detailed-topic-list) > .intro-copy { grid-template-rows: auto auto auto minmax(0, 1fr) auto; }
+}
+@media (max-width: 390px), (max-height: 680px) {
+  .intro-stage > .intro-copy > .intro-actions { gap: 5px; }
+  .intro-stage > .intro-copy > .intro-actions .button { min-height: 35px; padding-top: 5px; padding-bottom: 5px; }
+}
+
+/* Final no-scroll rule: the presentation stage itself never becomes a vertical scroller. */
+.intro-page .intro-stage,
+.intro-page-support .intro-stage {
+  overflow: hidden !important;
+  overscroll-behavior: none;
+}
+.intro-page .intro-main,
+.intro-page-support .intro-main {
+  overflow: hidden !important;
+}
+
+/* Final vertical fit for QR Wallet: preserve a large QR while leaving zero hidden overflow. */
+.intro-page-support .intro-support-single .intro-qr-column img {
+  width: clamp(190px, 25vh, 276px) !important;
+  max-width: min(74vw, 276px);
+}
+@media (max-width: 760px) {
+  .intro-page-support .intro-support-single .intro-qr-column img {
+    width: clamp(184px, 50vw, 238px) !important;
+    max-width: 76vw;
+  }
+}
+@media (max-width: 390px) {
+  .intro-page-support .intro-support-single .intro-qr-column img {
+    width: min(184px, 56vw) !important;
+    max-width: 76vw;
+  }
+}
+
+/* Explicit sub-properties prevent any earlier stage overflow-y rule from creating a scroll bar. */
+.intro-page .intro-stage,
+.intro-page-support .intro-stage {
+  overflow-x: hidden !important;
+  overflow-y: hidden !important;
+}
