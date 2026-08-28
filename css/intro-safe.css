@@ -813,3 +813,111 @@ html:has(.intro-page),body:has(.intro-page){overflow:hidden}
   .qr-troubleshooting summary { padding: 8px 9px; font-size: 11px; }
   .qr-troubleshooting p { padding: 0 9px 9px; font-size: 10px; line-height: 1.4; }
 }
+
+/* Final presentation correction: reserve a real bottom row for navigation and keep each stage inside the viewport. */
+.intro-page .intro-main {
+  grid-template-rows: auto auto minmax(0, 1fr) auto !important;
+}
+.intro-page .intro-stage {
+  min-height: 0 !important;
+  height: 100% !important;
+  overflow: hidden !important;
+  align-items: stretch !important;
+}
+.intro-page .intro-stage > .intro-copy {
+  min-height: 0 !important;
+  height: 100% !important;
+  overflow: hidden !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+.intro-page .intro-stage > .intro-copy > .intro-actions {
+  flex: 0 0 auto !important;
+  position: static !important;
+  visibility: visible !important;
+  margin-top: auto !important;
+  padding: 6px 0 max(6px, env(safe-area-inset-bottom)) !important;
+  background: #103640 !important;
+}
+.intro-page .intro-stage > .intro-copy > .intro-actions .button {
+  min-height: 42px !important;
+}
+.intro-page .intro-dots {
+  flex: 0 0 auto;
+  min-height: 16px;
+}
+
+/* QR Wallet: keep the complete message above a large, readable QR without pushing navigation away. */
+.intro-page-support .intro-stage {
+  align-items: start !important;
+  padding: 3px 0 !important;
+}
+.intro-page-support .intro-stage > .intro-copy {
+  overflow: hidden !important;
+}
+.intro-page-support .intro-copy > h1 {
+  font-size: clamp(24px, 3.4vw, 44px) !important;
+  line-height: .96 !important;
+  margin: 4px 0 6px !important;
+}
+.intro-page-support .intro-copy > p {
+  font-size: clamp(10px, 1.05vw, 14px) !important;
+  line-height: 1.22 !important;
+  margin: 0 0 5px !important;
+}
+.intro-page-support .intro-support-single {
+  flex: 0 1 auto !important;
+  min-height: 0 !important;
+  margin: 3px 0 !important;
+  padding: 7px !important;
+  gap: 7px !important;
+}
+.intro-page-support .intro-support-single .support-message-once {
+  padding: 7px 9px !important;
+}
+.intro-page-support .intro-support-single .support-message-once p {
+  font-size: clamp(9px, 1vw, 12px) !important;
+  line-height: 1.18 !important;
+}
+.intro-page-support .intro-support-single .support-message-once p:first-child {
+  margin-bottom: 4px !important;
+  font-size: clamp(15px, 1.6vw, 21px) !important;
+  line-height: 1.05 !important;
+}
+.intro-page-support .intro-support-single .intro-qr-column {
+  padding: 7px 8px !important;
+  gap: 2px !important;
+}
+.intro-page-support .intro-support-single .intro-qr-column img {
+  width: clamp(150px, 19vh, 220px) !important;
+  max-width: min(58vw, 220px) !important;
+  padding: 5px !important;
+}
+.intro-page-support .intro-support-single .intro-qr-column strong,
+.intro-page-support .intro-support-single .intro-qr-column small {
+  display: block !important;
+  font-size: 9px !important;
+  line-height: 1.1 !important;
+}
+@media (max-width: 760px) {
+  .intro-page .intro-stage > .intro-copy > .intro-actions .button { min-height: 38px !important; }
+  .intro-page-support .intro-copy > h1 { font-size: clamp(23px, 7vw, 34px) !important; }
+  .intro-page-support .intro-copy > p { font-size: 10px !important; }
+  .intro-page-support .intro-support-single .intro-qr-column img {
+    width: min(184px, 49vw) !important;
+    max-width: 72vw !important;
+  }
+  .intro-page-support .intro-support-single .support-message-once p { font-size: 10px !important; }
+  .intro-page-support .intro-support-single .support-message-once p:first-child { font-size: 16px !important; }
+}
+@media (max-width: 390px), (max-height: 680px) {
+  .intro-page .intro-stage > .intro-copy > .intro-actions .button {
+    min-height: 34px !important;
+    padding-top: 4px !important;
+    padding-bottom: 4px !important;
+    font-size: 10px !important;
+  }
+  .intro-page-support .intro-support-single .intro-qr-column img {
+    width: min(164px, 48vw) !important;
+  }
+}
