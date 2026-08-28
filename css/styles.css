@@ -107,3 +107,60 @@
 .paizomath-update-banner.is-playing { bottom: max(84px, calc(14px + env(safe-area-inset-bottom))); }
 .refresh-data-box { display: none !important; }
 @media (prefers-reduced-motion: reduce) { .paizomath-update-banner { transition: none; } }
+
+/* Parent PayPal modal: message first, large QR below, with no floating thumbnail. */
+.support-dialog.exact-support-dialog {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: auto auto auto auto auto;
+  align-content: start;
+  width: min(760px, calc(100vw - 24px));
+  max-height: calc(100dvh - 24px);
+  overflow: hidden;
+  padding: 22px 26px 18px;
+}
+.support-dialog.exact-support-dialog .support-close { grid-row: 1; grid-column: 1; justify-self: end; }
+.support-dialog.exact-support-dialog .modal-kicker { grid-row: 2; grid-column: 1; justify-self: center; }
+.support-dialog.exact-support-dialog > h2 { grid-row: 3; grid-column: 1; margin: 8px 0 7px; }
+.support-dialog.exact-support-dialog .support-copy { display: contents; }
+.support-dialog.exact-support-dialog .support-message-section { grid-row: 4; grid-column: 1; order: initial; }
+.support-dialog.exact-support-dialog > img {
+  grid-row: 5;
+  grid-column: 1;
+  order: initial;
+  float: none;
+  display: block;
+  width: clamp(250px, 34vh, 360px);
+  max-width: min(82vw, 360px);
+  height: auto;
+  aspect-ratio: 1;
+  object-fit: contain;
+  margin: 12px auto 5px;
+  padding: 10px;
+}
+.support-dialog.exact-support-dialog .privacy-support-section {
+  grid-row: 6;
+  grid-column: 1;
+  margin-top: 8px;
+}
+.support-dialog.exact-support-dialog .support-message-section p { font-size: 13px; line-height: 1.42; }
+.support-dialog.exact-support-dialog .support-message-section p:first-child { font-size: 18px; line-height: 1.2; }
+@media (max-width: 620px) {
+  .support-dialog.exact-support-dialog {
+    width: min(100vw - 16px, 600px);
+    max-height: calc(100dvh - 16px);
+    padding: 15px 14px 12px;
+  }
+  .support-dialog.exact-support-dialog > h2 { font-size: 24px; margin: 6px 0 5px; }
+  .support-dialog.exact-support-dialog > img {
+    width: min(230px, 62vw);
+    max-width: 74vw;
+    margin-top: 8px;
+    padding: 7px;
+  }
+  .support-dialog.exact-support-dialog .support-message-section { padding: 9px 10px; }
+  .support-dialog.exact-support-dialog .support-message-section p { font-size: 11px; line-height: 1.28; }
+  .support-dialog.exact-support-dialog .support-message-section p:first-child { font-size: 16px; }
+  .support-dialog.exact-support-dialog .privacy-support-section { padding: 8px 10px; }
+  .support-dialog.exact-support-dialog .privacy-support-section p { font-size: 10px !important; line-height: 1.3 !important; }
+}

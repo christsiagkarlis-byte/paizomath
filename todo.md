@@ -1,0 +1,18 @@
+- [ ] Έλεγχος QR και responsive layout σε Android mobile/tablet.
+- [ ] Έλεγχος QR και responsive layout σε iPhone/iPad.
+- [ ] Έλεγχος QR και responsive layout σε Windows PC.
+- [ ] Έλεγχος QR και responsive layout σε Linux PC.
+- [ ] Προσθήκη οδηγού χρήσης για κινητά, tablet και υπολογιστές.
+- [ ] Νέα επαλήθευση του protected ZIP μετά τις οδηγίες.
+- [ ] Προσαρμογή περιγράμματος, φόντου και τυπογραφίας της QR card στο branding του PaizoMath.
+- [ ] Διατήρηση καθαρής λευκής scan area και επαρκούς αντίθεσης γύρω από το QR.
+- [ ] Έλεγχος branded QR card σε mobile και desktop viewports.
+- [ ] Protected rebuild, ZIP integrity check και παράδοση αρχείου για upload.
+- [ ] Δημιουργία προεπισκόπησης κινητού portrait 390×844.
+- [ ] Δημιουργία προεπισκόπησης Android portrait 360×800.
+- [ ] Δημιουργία προεπισκόπησης tablet/mobile landscape.
+- [ ] Καταγραφή οδηγιών χρήσης και σημείων ελέγχου για QR card, γονικό modal και QR Wallet.
+- [ ] Προσθήκη troubleshooting για φωτεινότητα, καθαρό φακό, εστίαση και απόσταση από την οθόνη.
+- [ ] Προσθήκη εναλλακτικών Google Lens/Κάμερας και διαφορετικού browser.
+- [ ] Προσθήκη οδηγίας ανοίγματος του QR σε πλήρες μέγεθος και ελέγχου παλιάς cache.
+- [ ] Ενημέρωση του mobile guide και δημιουργία νέου ZIP οδηγιών.
