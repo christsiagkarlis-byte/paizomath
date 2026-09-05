@@ -1,0 +1,90 @@
+.update-banner {
+  position: fixed;
+  left: 50%;
+  bottom: max(16px, env(safe-area-inset-bottom));
+  z-index: 9999;
+  width: min(calc(100% - 24px), 520px);
+  transform: translateX(-50%);
+  padding: 12px;
+}
+
+.update-banner__card {
+  color: #102a33;
+  background: #fffdf7;
+  border: 2px solid #ff765f;
+  border-radius: 18px;
+  box-shadow: 0 16px 40px rgba(5, 30, 36, 0.28);
+  padding: 16px;
+}
+
+.update-banner__title {
+  display: block;
+  color: #0b4a55;
+  font-size: 1rem;
+  line-height: 1.25;
+  margin-bottom: 6px;
+}
+
+.update-banner__text {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+
+.update-banner__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.update-banner__button {
+  min-height: 44px;
+  border: 0;
+  border-radius: 10px;
+  padding: 10px 14px;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.update-banner__button--primary {
+  color: #fff;
+  background: #ff765f;
+}
+
+.update-banner__button--secondary {
+  color: #0b4a55;
+  background: #dff6f0;
+}
+
+.update-banner__button:focus-visible {
+  outline: 3px solid #f4bf3b;
+  outline-offset: 3px;
+}
+
+@media (max-width: 420px) {
+  .update-banner {
+    width: calc(100% - 12px);
+    padding: 6px;
+  }
+
+  .update-banner__actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .update-banner__button {
+    width: 100%;
+    padding-inline: 8px;
+    font-size: 0.86rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .update-banner,
+  .update-banner * {
+    transition: none !important;
+    animation: none !important;
+  }
+}

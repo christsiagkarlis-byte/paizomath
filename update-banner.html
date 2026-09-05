@@ -1,0 +1,21 @@
+<!-- Copy this block into index.html immediately before </body>. -->
+<div id="update-banner" class="update-banner" hidden role="status" aria-live="polite">
+  <div class="update-banner__card">
+    <strong class="update-banner__title">Νέα έκδοση διαθέσιμη</strong>
+    <p class="update-banner__text">
+      Η εφαρμογή ενημερώθηκε με διορθώσεις και βελτιώσεις.
+      Για ασφαλή ανανέωση, πάτησε «Ανανέωση» όταν ολοκληρώσεις τον τρέχοντα γύρο.
+    </p>
+    <div class="update-banner__actions">
+      <button id="update-now" type="button" class="update-banner__button update-banner__button--primary">
+        Ανανέωση τώρα
+      </button>
+      <button id="update-later" type="button" class="update-banner__button update-banner__button--secondary">
+        Αργότερα
+      </button>
+    </div>
+  </div>
+</div>
+
+<link rel="stylesheet" href="./css/update-banner.css">
+<script src="./js/update-version.js" defer></script>
