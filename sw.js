@@ -1,46 +1,60 @@
-const CACHE_NAME = 'paizomath-2026.09.05';
-
-const CORE_ASSETS = [
-  './',
-  './index.html',
-  './css/update-banner.css',
-  './js/update-version.js',
+const CACHE = "paizomath-portable-v32";
+const CORE = [
+  "./",
+  "./index.html",
+  "./terms.html",
+  "./css/styles.css",
+  "./css/terms.css",
+  "./css/intro-topics.css",
+  "./css/intro-safe.css",
+  "./js/app.js",
+  "./js/protection.js",
+  "./js/update-manager.js",
+  "./manifest.webmanifest",
+  "./audio/paizomath-presentation-bed.mp3",
+  "./images/paizo-logo.png",
 ];
 
-self.addEventListener('install', (event) => {
+self.addEventListener("install", (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => cache.addAll(CORE_ASSETS)),
+    caches.open(CACHE).then((cache) => cache.addAll(CORE)),
   );
-  // The new worker waits until the page is refreshed by the user.
+  // Keep the worker waiting until update-manager.js decides it is safe.
 });
 
-self.addEventListener('activate', (event) => {
+self.addEventListener("activate", (event) => {
   event.waitUntil(
-    caches.keys().then((cacheNames) =>
+    caches.keys().then((keys) =>
       Promise.all(
-        cacheNames
-          .filter((cacheName) => cacheName.startsWith('paizomath-'))
-          .filter((cacheName) => cacheName !== CACHE_NAME)
-          .map((cacheName) => caches.delete(cacheName)),
+        keys
+          .filter((key) => key.startsWith("paizomath-portable-") && key !== CACHE)
+          .map((key) => caches.delete(key)),
       ),
-    ),
+    ).then(() => self.clients.claim()),
   );
 });
 
-self.addEventListener('fetch', (event) => {
-  if (event.request.method !== 'GET') {
-    return;
+self.addEventListener("message", (event) => {
+  if (event.data && event.data.type === "SKIP_WAITING") {
+    self.skipWaiting();
   }
+});
+
+self.addEventListener("fetch", (event) => {
+  if (event.request.method !== "GET") return;
 
   event.respondWith(
-    fetch(event.request)
-      .then((response) => {
-        const responseCopy = response.clone();
-        caches.open(CACHE_NAME).then((cache) => {
-          cache.put(event.request, responseCopy);
-        });
+    caches.match(event.request).then((cached) => {
+      const networkRequest = fetch(event.request).then((response) => {
+        if (response.ok && new URL(event.request.url).origin === self.location.origin) {
+          event.waitUntil(
+            caches.open(CACHE).then((cache) => cache.put(event.request, response.clone())),
+          );
+        }
         return response;
-      })
-      .catch(() => caches.match(event.request)),
+      });
+
+      return cached || networkRequest;
+    }).catch(() => caches.match("./index.html")),
   );
 });
