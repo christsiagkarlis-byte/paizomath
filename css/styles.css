@@ -112,31 +112,41 @@
 .support-dialog.exact-support-dialog {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-  grid-template-rows: auto auto auto auto auto;
+  grid-template-rows: auto auto auto auto auto auto;
   align-content: start;
-  width: min(760px, calc(100vw - 24px));
-  max-height: calc(100dvh - 24px);
-  overflow: hidden;
-  padding: 22px 26px 18px;
+  width: min(860px, calc(100vw - 24px));
+  max-height: min(94dvh, 980px);
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: 28px 34px 24px;
+  box-sizing: border-box;
 }
 .support-dialog.exact-support-dialog .support-close { grid-row: 1; grid-column: 1; justify-self: end; }
 .support-dialog.exact-support-dialog .modal-kicker { grid-row: 2; grid-column: 1; justify-self: center; }
 .support-dialog.exact-support-dialog > h2 { grid-row: 3; grid-column: 1; margin: 8px 0 7px; }
 .support-dialog.exact-support-dialog .support-copy { display: contents; }
-.support-dialog.exact-support-dialog .support-message-section { grid-row: 4; grid-column: 1; order: initial; }
+.support-dialog.exact-support-dialog .support-message-section {
+  grid-row: 4;
+  grid-column: 1;
+  order: initial;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
 .support-dialog.exact-support-dialog > img {
   grid-row: 5;
   grid-column: 1;
   order: initial;
   float: none;
   display: block;
-  width: clamp(250px, 34vh, 360px);
-  max-width: min(82vw, 360px);
+  width: clamp(220px, 30vh, 340px);
+  max-width: min(78vw, 340px);
   height: auto;
   aspect-ratio: 1;
   object-fit: contain;
-  margin: 12px auto 5px;
+  margin: 18px auto 8px;
   padding: 10px;
+  position: static;
+  clear: both;
 }
 .support-dialog.exact-support-dialog .privacy-support-section {
   grid-row: 6;
@@ -148,14 +158,14 @@
 @media (max-width: 620px) {
   .support-dialog.exact-support-dialog {
     width: min(100vw - 16px, 600px);
-    max-height: calc(100dvh - 16px);
-    padding: 15px 14px 12px;
+    max-height: min(94dvh, 860px);
+    padding: 20px 16px 18px;
   }
   .support-dialog.exact-support-dialog > h2 { font-size: 24px; margin: 6px 0 5px; }
   .support-dialog.exact-support-dialog > img {
-    width: min(230px, 62vw);
-    max-width: 74vw;
-    margin-top: 8px;
+    width: min(250px, 66vw);
+    max-width: 78vw;
+    margin-top: 14px;
     padding: 7px;
   }
   .support-dialog.exact-support-dialog .support-message-section { padding: 9px 10px; }

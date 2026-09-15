@@ -558,6 +558,22 @@ html:has(.intro-page),body:has(.intro-page){overflow:hidden}
   padding: 7px;
   background: #fff;
 }
+.intro-page-support .intro-stage > .intro-copy {
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
+  padding-bottom: max(8px, env(safe-area-inset-bottom));
+}
+.intro-page-support .intro-support-single,
+.intro-page-support .intro-support-single > * {
+  min-width: 0;
+}
+.intro-page-support .intro-support-single .support-message-once,
+.intro-page-support .intro-support-single .support-message-once p {
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
 .intro-page-support .intro-support-single .support-message-once {
   width: 100%;
   padding: clamp(9px, 1.2vh, 14px) clamp(11px, 1.5vw, 18px);
@@ -573,8 +589,8 @@ html:has(.intro-page),body:has(.intro-page){overflow:hidden}
 @media (max-width: 760px) {
   .intro-page-support .intro-support-single { gap: 7px; padding: 9px; }
   .intro-page-support .intro-support-single .intro-qr-column img {
-    width: clamp(190px, 52vw, 260px) !important;
-    max-width: 80vw;
+    width: clamp(170px, 48vw, 235px) !important;
+    max-width: 74vw;
   }
   .intro-page-support .intro-support-single .support-message-once p {
     font-size: clamp(10px, 3.1vw, 13px) !important;
@@ -587,8 +603,8 @@ html:has(.intro-page),body:has(.intro-page){overflow:hidden}
 @media (max-width: 390px) {
   .intro-page-support .intro-support-single { gap: 5px; padding: 7px; }
   .intro-page-support .intro-support-single .intro-qr-column img {
-    width: min(190px, 58vw) !important;
-    max-width: 78vw;
+    width: min(176px, 54vw) !important;
+    max-width: 72vw;
     padding: 5px;
   }
   .intro-page-support .intro-support-single .support-message-once { padding: 7px 9px; }
