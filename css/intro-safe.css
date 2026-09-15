@@ -972,3 +972,26 @@ html:has(.intro-page),body:has(.intro-page){overflow:hidden}
 @media (max-width: 390px) {
   .support-dialog.exact-support-dialog .support-modal-qr { width: min(300px, 82vw) !important; }
 }
+
+/* Desktop Linux presentation notice: keep update feedback away from source text and bottom navigation. */
+.paizomath-update-banner.is-presentation {
+  top: 76px !important;
+  right: 18px !important;
+  bottom: auto !important;
+  left: auto !important;
+  width: min(320px, calc(100vw - 36px)) !important;
+  max-width: calc(100vw - 36px) !important;
+  padding: 9px 12px !important;
+  font-size: 11px !important;
+  line-height: 1.25 !important;
+  z-index: 40 !important;
+}
+@media (max-width: 760px) {
+  .paizomath-update-banner.is-presentation {
+    top: 68px !important;
+    right: 10px !important;
+    width: min(270px, calc(100vw - 20px)) !important;
+    max-width: calc(100vw - 20px) !important;
+    font-size: 10px !important;
+  }
+}

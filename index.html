@@ -4,20 +4,22 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#164b52">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; media-src 'self' blob:; connect-src 'self'; font-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; worker-src 'self'; frame-ancestors 'none';">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta name="description" content="Παίζω και Μαθαίνω — φορητή, δίγλωσση web εφαρμογή μάθησης για παιδιά.">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="icon" href="images/paizo-logo.png">
-  <link rel="stylesheet" href="css/styles.css?v=32">
-  <link rel="stylesheet" href="css/terms.css?v=32">
-  <link rel="stylesheet" href="css/intro-topics.css?v=32">
-  <link rel="stylesheet" href="css/intro-safe.css?v=32">
+  <link rel="stylesheet" href="css/styles.css?v=33" integrity="sha384-PFaP0SXPuNP0c7hcXdwEcDF1AjPz8M5CDnJxCr0epJ5CRYJe8bn4bkL/gFMz8/80" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/terms.css?v=33" integrity="sha384-zwi2p1MJi1L+NzLnYC2zVAw17F9bWBqejpHFbhTPtJxq0MlUHNcuXxqMXro4f04p" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/intro-topics.css?v=33" integrity="sha384-t1QoBHBSMjqMHJPRoDbdnqAdpcfrrci07rdSfRg6GWMNJyrweK2mvBv7qErPdhH4" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/intro-safe.css?v=33" integrity="sha384-tj+dx2TXQZVFQxrG9C+emlIanWMHG+yAPIisGic3AJHe0iS09VZNHfu/STl0GYsr" crossorigin="anonymous">
   <title>Παίζω και Μαθαίνω</title>
 </head>
 <body>
   <noscript>Η εφαρμογή χρειάζεται JavaScript για την τοπική αποθήκευση προόδου και τα διαδραστικά παιχνίδια.</noscript>
   <div id="app"></div>
-  <script defer src="js/protection.js"></script>
-  <script defer src="js/update-manager.js"></script>
-  <script defer src="js/app.js"></script>
+  <script defer src="js/protection.js" integrity="sha384-vcKm/QehLoLUMAvzFDlnFvMn9grGlaMIGsmfkBfYUIvo7PtWqL3QsLXtDv6Z7Bdy" crossorigin="anonymous"></script>
+  <script defer src="js/update-manager.js" integrity="sha384-UW/zqTQ1DPm9JtRRl6JHPmik3ESmiwAsWpKsHf9OqJcfONc9paIOjzXGilBXdw/b" crossorigin="anonymous"></script>
+  <script defer src="js/app.js" integrity="sha384-o68EhiNd13cpiZRH3YMhGF/xE3Wq5TCTZ1UQMFYTVX5DnF/j4A3oUcuKej5S0+sz" crossorigin="anonymous"></script>
 </body>
 </html>
