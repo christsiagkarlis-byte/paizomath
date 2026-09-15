@@ -1011,3 +1011,65 @@ html:has(.intro-page),body:has(.intro-page){overflow:hidden}
     font-size: 10px !important;
   }
 }
+
+/* Definitive mobile/desktop fix: the presentation support card must flow vertically.
+   Do not allow the QR column or image to float, overlap, or be positioned over copy. */
+.intro-page-support .intro-support-single {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+  justify-content: flex-start !important;
+  gap: 12px !important;
+  height: auto !important;
+  min-height: 0 !important;
+  overflow: visible !important;
+}
+.intro-page-support .intro-support-single .intro-support-copy,
+.intro-page-support .intro-support-single .support-message-once,
+.intro-page-support .intro-support-single .intro-qr-column {
+  position: static !important;
+  display: block !important;
+  float: none !important;
+  clear: both !important;
+  width: 100% !important;
+  max-width: none !important;
+  min-height: 0 !important;
+  height: auto !important;
+  transform: none !important;
+  inset: auto !important;
+}
+.intro-page-support .intro-support-single .intro-qr-column {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  gap: 5px !important;
+  overflow: visible !important;
+}
+.intro-page-support .intro-support-single .intro-qr-column img {
+  position: static !important;
+  display: block !important;
+  float: none !important;
+  clear: both !important;
+  width: min(250px, 64vw) !important;
+  max-width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  transform: none !important;
+  margin: 0 auto !important;
+}
+@media (max-width: 760px) {
+  .intro-page-support .intro-stage > .intro-copy {
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+  }
+  .intro-page-support .intro-support-single { gap: 10px !important; }
+  .intro-page-support .intro-support-single .intro-qr-column img {
+    width: min(230px, 62vw) !important;
+  }
+}
+@media (max-width: 390px) {
+  .intro-page-support .intro-support-single .intro-qr-column img {
+    width: min(198px, 58vw) !important;
+  }
+}
