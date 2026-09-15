@@ -1727,3 +1727,58 @@ html body #app > .intro-page-support {
   font-size: clamp(11px, 1.1vw, 15px) !important;
   font-weight: 800 !important;
 }
+
+
+/* MOBILE FINAL OVERRIDE — darker message and straight, undistorted QR */
+@media (max-width: 767px) {
+  .intro-page-support .intro-support-single.support-white-container .support-message-once,
+  .intro-page-support .intro-support-single.support-white-container .support-message-once *,
+  .intro-page-support .intro-support-single.support-white-container .intro-support-copy,
+  .intro-page-support .intro-support-single.support-white-container p {
+    color: #111111 !important;
+    opacity: 1 !important;
+    text-shadow: none !important;
+    font-weight: 800 !important;
+    line-height: 1.5 !important;
+  }
+
+  .intro-page-support .intro-support-single.support-white-container > .intro-qr-column,
+  .intro-page-support .intro-support-single.support-white-container > .intro-qr-column img,
+  .intro-page-support .intro-support-single.support-white-container > .intro-qr-column > img {
+    position: relative !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    transform: none !important;
+    rotate: none !important;
+    scale: 1 !important;
+    skew: none !important;
+    perspective: none !important;
+    clip-path: none !important;
+    filter: none !important;
+    object-fit: contain !important;
+    object-position: center !important;
+    aspect-ratio: auto !important;
+    width: min(260px, 88vw) !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    margin: 0 auto 10px !important;
+    padding: 6px !important;
+    box-sizing: border-box !important;
+  }
+
+  .intro-page-support .intro-support-single.support-white-container > .intro-qr-column strong,
+  .intro-page-support .intro-support-single.support-white-container > .intro-qr-column small {
+    position: relative !important;
+    display: block !important;
+    clear: both !important;
+    color: #111111 !important;
+    opacity: 1 !important;
+    transform: none !important;
+    margin-top: 12px !important;
+    line-height: 1.35 !important;
+    text-align: center !important;
+  }
+}
