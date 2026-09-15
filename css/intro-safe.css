@@ -1782,3 +1782,57 @@ html body #app > .intro-page-support {
     text-align: center !important;
   }
 }
+
+
+/* QR MESSAGE FINAL — pure black and bold */
+.intro-page-support .intro-support-single.support-white-container .support-message-once,
+.intro-page-support .intro-support-single.support-white-container .support-message-once *,
+.intro-page-support .intro-support-single.support-white-container > .intro-qr-column strong,
+.intro-page-support .intro-support-single.support-white-container > .intro-qr-column small {
+  color: #000000 !important;
+  opacity: 1 !important;
+  font-weight: 900 !important;
+  text-shadow: none !important;
+}
+
+.intro-page-support .intro-support-single.support-white-container .support-message-once {
+  display: block !important;
+  position: relative !important;
+  line-height: 1.45 !important;
+  text-align: left !important;
+}
+
+.intro-page-support .intro-support-single.support-white-container .support-message-once p {
+  display: block !important;
+  position: relative !important;
+  color: #000000 !important;
+  opacity: 1 !important;
+  font-weight: 900 !important;
+  line-height: 1.45 !important;
+  margin: 0 0 10px !important;
+}
+
+.intro-page-support .intro-support-single.support-white-container > .intro-qr-column strong,
+.intro-page-support .intro-support-single.support-white-container > .intro-qr-column small {
+  display: block !important;
+  position: relative !important;
+  color: #000000 !important;
+  opacity: 1 !important;
+  font-weight: 900 !important;
+  line-height: 1.35 !important;
+  text-align: center !important;
+  margin-top: 12px !important;
+  white-space: normal !important;
+  overflow-wrap: anywhere !important;
+}
+
+@media (max-width: 767px) {
+  .intro-page-support .intro-support-single.support-white-container .support-message-once,
+  .intro-page-support .intro-support-single.support-white-container .support-message-once *,
+  .intro-page-support .intro-support-single.support-white-container > .intro-qr-column strong,
+  .intro-page-support .intro-support-single.support-white-container > .intro-qr-column small {
+    color: #000000 !important;
+    opacity: 1 !important;
+    font-weight: 900 !important;
+  }
+}
