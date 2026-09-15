@@ -1369,3 +1369,139 @@ html:has(.intro-page),body:has(.intro-page){overflow:hidden}
     width: min(280px, 100%) !important;
   }
 }
+
+
+/* FINAL HIGH-SPECIFICITY OVERRIDE — responsive white QR container */
+.intro-page-support .intro-support-single.support-white-container {
+  position: relative !important;
+  display: flex !important;
+  flex-direction: column !important;
+  width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  align-items: stretch !important;
+  justify-content: flex-start !important;
+  gap: 16px !important;
+  padding: 16px !important;
+  box-sizing: border-box !important;
+  overflow: visible !important;
+}
+
+.intro-page-support .intro-support-single.support-white-container > .intro-support-copy {
+  position: relative !important;
+  display: block !important;
+  order: 1 !important;
+  flex: 1 1 auto !important;
+  width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-width: none !important;
+  min-width: 0 !important;
+  padding: 4px !important;
+  box-sizing: border-box !important;
+  overflow: visible !important;
+}
+
+.intro-page-support .intro-support-single.support-white-container > .intro-support-copy > .support-message-once {
+  position: relative !important;
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  padding: 12px !important;
+  box-sizing: border-box !important;
+  line-height: 1.45 !important;
+  overflow: visible !important;
+  overflow-wrap: anywhere !important;
+}
+
+.intro-page-support .intro-support-single.support-white-container > .intro-support-copy > .support-message-once p {
+  position: relative !important;
+  display: block !important;
+  height: auto !important;
+  margin: 0 0 10px !important;
+  line-height: 1.45 !important;
+  overflow: visible !important;
+  overflow-wrap: anywhere !important;
+}
+
+.intro-page-support .intro-support-single.support-white-container > .intro-qr-column {
+  position: relative !important;
+  display: flex !important;
+  order: 2 !important;
+  flex: 0 1 280px !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  transform: none !important;
+  overflow: visible !important;
+  box-sizing: border-box !important;
+}
+
+.intro-page-support .intro-support-single.support-white-container > .intro-qr-column img,
+.intro-page-support .intro-support-single.support-white-container > .intro-qr-column > img {
+  position: relative !important;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  width: min(280px, 100%) !important;
+  max-width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  object-fit: contain !important;
+  transform: none !important;
+  float: none !important;
+  margin: 0 auto 8px !important;
+}
+
+@media (max-width: 767px) {
+  .intro-page-support .intro-support-single.support-white-container {
+    display: flex !important;
+    flex-direction: column !important;
+    height: auto !important;
+    min-height: 0 !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .intro-page-support .intro-support-single.support-white-container {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: flex-start !important;
+    height: auto !important;
+    min-height: 260px !important;
+    gap: 22px !important;
+  }
+
+  .intro-page-support .intro-support-single.support-white-container > .intro-support-copy {
+    flex: 1 1 0 !important;
+    width: auto !important;
+    max-width: none !important;
+  }
+
+  .intro-page-support .intro-support-single.support-white-container > .intro-qr-column {
+    flex: 0 1 300px !important;
+    width: 300px !important;
+    max-width: 38% !important;
+  }
+
+  .intro-page-support .intro-support-single.support-white-container > .intro-qr-column img,
+  .intro-page-support .intro-support-single.support-white-container > .intro-qr-column > img {
+    display: block !important;
+    visibility: visible !important;
+    width: 100% !important;
+    max-width: 300px !important;
+    height: auto !important;
+  }
+}
