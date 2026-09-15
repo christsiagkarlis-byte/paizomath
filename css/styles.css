@@ -174,3 +174,53 @@
   .support-dialog.exact-support-dialog .privacy-support-section { padding: 8px 10px; }
   .support-dialog.exact-support-dialog .privacy-support-section p { font-size: 10px !important; line-height: 1.3 !important; }
 }
+
+
+/* Lightweight copy deterrence: keep controls usable while locking ordinary page text. */
+body,
+#app,
+#app .paizo {
+  -webkit-user-select: none !important;
+  user-select: none !important;
+}
+
+body input,
+body textarea,
+body select,
+body button,
+body a {
+  -webkit-user-select: auto;
+  user-select: auto;
+}
+
+.public-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 8px 16px;
+  width: 100%;
+  padding: 20px 22px 24px;
+  color: #5d716b;
+  background: #f4f8f4;
+  text-align: center;
+}
+
+.public-footer .copyright-footer {
+  flex-basis: 100%;
+  display: block;
+  color: #263631;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.55;
+}
+
+@media (max-width: 767px) {
+  .public-footer {
+    padding: 18px 16px 22px;
+  }
+
+  .public-footer .copyright-footer {
+    font-size: 10px;
+  }
+}
