@@ -1505,3 +1505,33 @@ html:has(.intro-page),body:has(.intro-page){overflow:hidden}
     height: auto !important;
   }
 }
+
+
+/* Mount safety: never hide the application or presentation root on any viewport. */
+html body #app,
+html body #app > .intro-page,
+html body #app > .intro-page-support {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+html body #app {
+  min-height: 100vh !important;
+  height: auto !important;
+}
+html body #app > .intro-page-support {
+  position: relative !important;
+  height: auto !important;
+  min-height: 100vh !important;
+  overflow: visible !important;
+}
+@media (max-width: 767px) {
+  html body #app,
+  html body #app > .intro-page-support {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    height: auto !important;
+    min-height: 100vh !important;
+  }
+}
