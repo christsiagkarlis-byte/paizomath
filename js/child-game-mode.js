@@ -23,6 +23,7 @@
 
     // Return directly to the protected parent PIN screen. Do not expose the
     // public Home screen or the presentation to the child after Exit.
+    sessionStorage.setItem('paizomath.parent-pin-request', '1');
     const pinButton = document.createElement('button');
     pinButton.type = 'button';
     pinButton.dataset.route = 'child-access';

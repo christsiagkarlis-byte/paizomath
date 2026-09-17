@@ -3,7 +3,10 @@
 
   let deferredPrompt = null;
   let promptConsumed = false;
+  let unlockedPickerMarkup = null;
+  let parentLandingMode = false;
   const app = document.getElementById('app');
+  const PARENT_EXIT_KEY = 'paizomath.parent-pin-request';
 
   window.addEventListener('beforeinstallprompt', (event) => {
     event.preventDefault();
@@ -18,10 +21,12 @@
     renderInstallControl();
   });
 
-  const isParentUnlockedScreen = () => Boolean(
+  const isParentPickerScreen = () => Boolean(
     app?.querySelector('.child-profile-picker'),
   );
-
+  const isParentLandingScreen = () => Boolean(
+    parentLandingMode && app?.querySelector('.hero'),
+  );
   const isStandalonePWA = () => Boolean(
     window.matchMedia?.('(display-mode: standalone)').matches
       || window.matchMedia?.('(display-mode: fullscreen)').matches
@@ -35,37 +40,32 @@
       || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
     const isFirefox = /Firefox/i.test(ua);
     const isAndroid = /Android/i.test(ua);
-    if (isIOS) {
-      return 'Σε Safari: πάτησε Κοινοποίηση (□↑) → Προσθήκη στην οθόνη Αφετηρίας → Προσθήκη.';
-    }
-    if (isAndroid && isFirefox) {
-      return 'Σε Firefox: πάτησε ⋮ → Εγκατάσταση ή Προσθήκη στην αρχική οθόνη → Προσθήκη.';
-    }
-    if (isAndroid) {
-      return 'Σε Chrome: πάτησε ⋮ → Προσθήκη στην αρχική οθόνη → Προσθήκη. Δεν είναι APK.';
-    }
-    return 'Στον browser: άνοιξε το μενού της σελίδας και επίλεξε Εγκατάσταση εφαρμογής ή Προσθήκη στην αρχική οθόνη.';
+    if (isIOS) return 'Σε Safari: Κοινοποίηση (□↑) → Προσθήκη στην οθόνη Αφετηρίας → Προσθήκη.';
+    if (isAndroid && isFirefox) return 'Σε Firefox: ⋮ → Εγκατάσταση ή Προσθήκη στην αρχική οθόνη → Προσθήκη.';
+    if (isAndroid) return 'Σε Chrome: ⋮ → Προσθήκη στην αρχική οθόνη → Προσθήκη. Δεν είναι APK.';
+    return 'Στον browser: μενού σελίδας → Εγκατάσταση εφαρμογής ή Προσθήκη στην αρχική οθόνη.';
+  };
+
+  const installHost = () => {
+    if (isParentLandingScreen()) return app.querySelector('.hero-actions');
+    if (isParentPickerScreen()) return app.querySelector('.child-profile-picker')?.parentElement;
+    return null;
   };
 
   const renderInstallControl = () => {
-    if (!app || !isParentUnlockedScreen() || isStandalonePWA()) return;
+    if (!app || (!isParentPickerScreen() && !isParentLandingScreen()) || isStandalonePWA()) return;
     if (app.querySelector('[data-pwa-install]')) return;
-
-    const actions = app.querySelector('.child-profile-picker')?.parentElement;
-    if (!actions) return;
-
+    const host = installHost();
+    if (!host) return;
     const panel = document.createElement('section');
     panel.className = 'pwa-install-panel';
     panel.innerHTML = `
       <strong>Γονέας: βάλε τη συντόμευση στο κινητό</strong>
       <p>Δεν είναι APK. Είναι η offline εφαρμογή στην αρχική οθόνη.</p>
-      <button type="button" class="button coral" data-pwa-install>
-        Προσθήκη στην αρχική οθόνη
-      </button>
+      <button type="button" class="button coral" data-pwa-install>Προσθήκη στην αρχική οθόνη</button>
       <small data-pwa-install-help hidden></small>
     `;
-    actions.insertBefore(panel, actions.firstChild);
-
+    host.appendChild(panel);
     panel.querySelector('[data-pwa-install]')?.addEventListener('click', async () => {
       const button = panel.querySelector('[data-pwa-install]');
       const help = panel.querySelector('[data-pwa-install-help]');
@@ -77,15 +77,61 @@
         renderInstallControl();
         return;
       }
-
       button.hidden = true;
       help.hidden = false;
       help.textContent = `${installInstructions()} Μετά άνοιξε τη συντόμευση από την αρχική οθόνη.`;
     });
   };
 
-  document.addEventListener('click', () => {
+  const showParentLanding = () => {
+    if (!app || !isParentPickerScreen()) return;
+    unlockedPickerMarkup = app.innerHTML;
+    parentLandingMode = true;
+    const homeButton = document.createElement('button');
+    homeButton.type = 'button';
+    homeButton.dataset.route = 'home';
+    homeButton.hidden = true;
+    app.appendChild(homeButton);
+    homeButton.click();
+    homeButton.remove();
     window.setTimeout(renderInstallControl, 0);
+  };
+
+  document.addEventListener('click', (event) => {
+    const target = event.target instanceof Element ? event.target.closest('[data-route]') : null;
+    if (target?.dataset.route === 'child-access' && sessionStorage.getItem(PARENT_EXIT_KEY) === '1') {
+      sessionStorage.removeItem(PARENT_EXIT_KEY);
+      parentLandingMode = false;
+      unlockedPickerMarkup = null;
+    }
+    if (target?.dataset.route === 'child-access' && parentLandingMode && unlockedPickerMarkup) {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      app.innerHTML = unlockedPickerMarkup;
+      window.setTimeout(renderInstallControl, 0);
+      return;
+    }
+
+    window.setTimeout(() => {
+      if (isParentPickerScreen() && !parentLandingMode && !unlockedPickerMarkup
+        && !app.querySelector('#unlock-child-access')) {
+        showParentLanding();
+      } else {
+        renderInstallControl();
+      }
+    }, 0);
   }, true);
-  window.setTimeout(renderInstallControl, 400);
+
+  // The PIN handler finishes by rendering the unlocked child picker. Replace
+  // that first unlocked render with the parent landing screen.
+  window.setTimeout(() => {
+    if (isParentPickerScreen() && !parentLandingMode && !unlockedPickerMarkup
+      && app.querySelector('#unlock-child-access')) {
+      const pinButton = app.querySelector('#unlock-child-access');
+      if (pinButton) {
+        pinButton.addEventListener('click', () => window.setTimeout(showParentLanding, 0), { once: true });
+      }
+    }
+    renderInstallControl();
+  }, 400);
 })();
