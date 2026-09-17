@@ -47,7 +47,7 @@
     if (!active) return;
 
     const desktopBrand = app.querySelector('.bar .brand');
-    if (desktopBrand) {
+    if (desktopBrand && !desktopBrand.matches('[data-game-exit="true"]')) {
       desktopBrand.classList.add('child-exit-control');
       desktopBrand.setAttribute('aria-label', 'Έξοδος');
       desktopBrand.innerHTML = '<span>Έξοδος</span>';
@@ -55,7 +55,7 @@
     }
 
     const quizExit = app.querySelector('.quiz-header > button:first-child');
-    if (quizExit) {
+    if (quizExit && !quizExit.matches('[data-game-exit="true"]')) {
       quizExit.classList.add('child-exit-control');
       quizExit.textContent = 'Έξοδος';
       quizExit.setAttribute('aria-label', 'Έξοδος');
