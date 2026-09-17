@@ -303,3 +303,55 @@ body.child-game-mode .quiz-header > .child-exit-control {
     width: 100%;
   }
 }
+
+/* Visible confirmation after a service-worker update finishes. */
+.update-notice {
+  position: fixed;
+  z-index: 1000;
+  right: 18px;
+  bottom: 18px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  max-width: min(460px, calc(100vw - 36px));
+  padding: 14px 16px;
+  border: 1px solid #9bd4be;
+  border-radius: 16px;
+  color: #164b52;
+  background: #effcf5;
+  box-shadow: 0 12px 30px rgba(22, 75, 82, .18);
+}
+.update-notice strong,
+.update-notice span {
+  display: block;
+}
+.update-notice strong {
+  font-size: 14px;
+}
+.update-notice span {
+  margin-top: 4px;
+  color: #57736d;
+  font-size: 11px;
+  line-height: 1.4;
+}
+.update-notice button {
+  flex: 0 0 auto;
+  min-height: 36px;
+  padding: 7px 12px;
+  border: 0;
+  border-radius: 10px;
+  color: #fff;
+  background: #164b52;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
+}
+@media (max-width: 620px) {
+  .update-notice {
+    right: 10px;
+    bottom: 10px;
+    left: 10px;
+    max-width: none;
+  }
+}

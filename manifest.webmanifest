@@ -1,7 +1,8 @@
 {
   "name": "Παίζω και Μαθαίνω",
   "short_name": "PaizoMath",
-  "start_url": "./index.html?source=home-screen",
+  "id": "./index.html",
+  "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
   "background_color": "#fffaf0",
