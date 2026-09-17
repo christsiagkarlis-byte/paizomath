@@ -5,6 +5,7 @@
   // profile picker. It ends when the child chooses Exit or reaches Home.
   let childGameMode = false;
   let exiting = false;
+  const CHILD_SESSION_KEY = 'paizomath.child-game-session';
 
   const app = document.getElementById('app');
 
@@ -17,6 +18,7 @@
   const exitToHome = () => {
     if (exiting) return;
     exiting = true;
+    sessionStorage.removeItem(CHILD_SESSION_KEY);
     document.body.classList.remove('child-game-mode');
 
     // Reuse the application's own route handling so the current session and
@@ -65,6 +67,11 @@
   };
 
   document.addEventListener('click', (event) => {
+    const profile = event.target instanceof Element
+      ? event.target.closest('[data-select-profile]')
+      : null;
+    if (profile) sessionStorage.setItem(CHILD_SESSION_KEY, '1');
+
     const target = event.target instanceof Element
       ? event.target.closest('[data-game-exit]')
       : null;
@@ -94,6 +101,19 @@
       if (app?.contains(profile) && isChildPicker()) profile.click();
     }, 180);
   }, true);
+
+  // The main app starts from Home after a full reload. Restore the child
+  // session into the child game menu without storing the parent's PIN.
+  if (sessionStorage.getItem(CHILD_SESSION_KEY) === '1' && isHome()) {
+    childGameMode = true;
+    const restoreButton = document.createElement('button');
+    restoreButton.type = 'button';
+    restoreButton.dataset.route = 'play';
+    restoreButton.hidden = true;
+    app.appendChild(restoreButton);
+    restoreButton.click();
+    restoreButton.remove();
+  }
 
   applyChildGameMode();
 })();
