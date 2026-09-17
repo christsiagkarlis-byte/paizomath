@@ -8,10 +8,7 @@
     { id: 'c', label: 'Γ΄ Δημοτικού' },
     { id: 'd', label: 'Δ΄ Δημοτικού' },
     { id: 'e', label: 'Ε΄ Δημοτικού' },
-    { id: 'st', label: 'ΣΤ΄ Δημοτικού' },
-    { id: 'g1', label: 'Α΄ Γυμνασίου' },
-    { id: 'g2', label: 'Β΄ Γυμνασίου' },
-    { id: 'g3', label: 'Γ΄ Γυμνασίου' }
+    { id: 'st', label: 'ΣΤ΄ Δημοτικού' }
   ];
 
   function getGrade() {
@@ -38,7 +35,7 @@
     wrapper.innerHTML = '<div class="grade-selector-copy"><div class="eyebrow">Προσωπική ρύθμιση</div>' +
       '<h2 id="grade-selector-title">Επίλεξε την τάξη σου</h2>' +
       '<p>Διάλεξε μία τάξη για να θυμάται η εφαρμογή το επίπεδο του παιδιού.</p></div>' +
-      '<div class="grade-options" role="group" aria-label="Τάξη Δημοτικού ή Γυμνασίου"></div>' +
+      '<div class="grade-options" role="group" aria-label="Τάξη δημοτικού"></div>' +
       '<p class="grade-selector-status" aria-live="polite"></p>';
     var options = wrapper.querySelector('.grade-options');
     grades.forEach(function (grade) {
