@@ -285,13 +285,13 @@
 
 .support-section-complete .support-message-section {
   border: 1px solid rgba(169, 221, 204, .43);
-  color: #e9faf1;
+  color: #000;
   background: rgba(255, 255, 255, .09);
 }
 
 .support-section-complete .support-message-section p {
   margin: 0;
-  color: #e6f6ed;
+  color: #000;
   font-size: 14px;
   font-weight: 650;
   line-height: 1.6;
@@ -299,7 +299,7 @@
 
 .support-section-complete .support-message-section p:first-child {
   margin-bottom: 9px;
-  color: #fff7cf;
+  color: #000;
   font-size: 20px;
   line-height: 1.25;
 }
