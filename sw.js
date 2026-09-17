@@ -1,4 +1,4 @@
-const CACHE = "paizomath-portable-v76";
+const CACHE = "paizomath-portable-v79";
 const CORE = [
   "./",
   "./index.html",
@@ -17,6 +17,7 @@ const CORE = [
   "./js/profile-delete-fix.js",
   "./js/full-reset.js",
   "./js/empty-profile-guard.js",
+  "./js/parent-links-fix.js",
   "./js/protection.js",
   "./js/update-manager.js",
   "./js/update-notice.js",
