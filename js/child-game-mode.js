@@ -81,5 +81,19 @@
     window.setTimeout(applyChildGameMode, 0);
   }, true);
 
+  // Some Android WebViews show the pressed state but do not dispatch the
+  // delegated click reliably. Give profile buttons a one-shot fallback after
+  // the pointer is released; if the normal click already worked, the picker
+  // is gone and nothing is triggered.
+  document.addEventListener('pointerup', (event) => {
+    const profile = event.target instanceof Element
+      ? event.target.closest('[data-select-profile]')
+      : null;
+    if (!profile) return;
+    window.setTimeout(() => {
+      if (app?.contains(profile) && isChildPicker()) profile.click();
+    }, 180);
+  }, true);
+
   applyChildGameMode();
 })();
