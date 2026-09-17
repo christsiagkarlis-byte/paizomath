@@ -1,4 +1,4 @@
-const CACHE = "paizomath-portable-v47";
+const CACHE = "paizomath-portable-v51";
 const CORE = [
   "./",
   "./index.html",
@@ -7,9 +7,13 @@ const CORE = [
   "./css/terms.css",
   "./css/intro-topics.css",
   "./css/intro-safe.css",
+  "./css/grades.css",
   "./js/app.js",
   "./js/protection.js",
   "./js/update-manager.js",
+  "./js/grade-content.js",
+  "./js/parity-layer.js",
+  "./js/grades.js",
   "./manifest.webmanifest",
   "./audio/paizomath-presentation-bed.mp3",
   "./images/paizo-logo.png",
