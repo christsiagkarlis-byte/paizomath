@@ -1836,24 +1836,3 @@ html body #app > .intro-page-support {
     font-weight: 900 !important;
   }
 }
-
-/* Keep the presentation background through the full mobile viewport, including browser safe-area space. */
-html:has(.intro-page),
-body:has(.intro-page) {
-  background-color: #0d2937;
-  background-image: none;
-}
-
-@media (max-width: 900px) {
-  .intro-page {
-    min-height: 100vh;
-    min-height: 100dvh;
-    padding-bottom: env(safe-area-inset-bottom, 0px);
-  }
-
-  .intro-main {
-    min-height: calc(100vh - 58px);
-    min-height: calc(100dvh - 58px);
-    padding-bottom: calc(22px + env(safe-area-inset-bottom, 0px));
-  }
-}
