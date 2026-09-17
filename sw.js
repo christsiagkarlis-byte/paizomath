@@ -1,4 +1,4 @@
-const CACHE = "paizomath-portable-v59";
+const CACHE = "paizomath-portable-v61";
 const CORE = [
   "./",
   "./index.html",
@@ -11,6 +11,7 @@ const CORE = [
   "./js/child-game-mode.js",
   "./js/pwa-install.js",
   "./js/pin-screen-guard.js",
+  "./js/parent-stats.js",
   "./js/protection.js",
   "./js/update-manager.js",
   "./js/update-notice.js",
