@@ -6,6 +6,7 @@
   let childGameMode = false;
   let exiting = false;
   const CHILD_SESSION_KEY = 'paizomath.child-game-session';
+  const CHILD_ACTIVE_KEY = 'paizomath.child-session-active';
 
   const app = document.getElementById('app');
 
@@ -19,6 +20,7 @@
     if (exiting) return;
     exiting = true;
     sessionStorage.removeItem(CHILD_SESSION_KEY);
+    localStorage.removeItem(CHILD_ACTIVE_KEY);
     document.body.classList.remove('child-game-mode');
 
     // Return directly to the protected parent PIN screen. Do not expose the
@@ -67,7 +69,10 @@
     const profile = event.target instanceof Element
       ? event.target.closest('[data-select-profile]')
       : null;
-    if (profile) sessionStorage.setItem(CHILD_SESSION_KEY, '1');
+    if (profile) {
+      sessionStorage.setItem(CHILD_SESSION_KEY, '1');
+      localStorage.setItem(CHILD_ACTIVE_KEY, '1');
+    }
 
     const target = event.target instanceof Element
       ? event.target.closest('[data-game-exit]')
@@ -99,13 +104,12 @@
     }, 180);
   }, true);
 
-  // The main app starts from Home after a full reload. Restore the child
-  // session into the child game menu without storing the parent's PIN.
-  if (sessionStorage.getItem(CHILD_SESSION_KEY) === '1' && isHome()) {
-    childGameMode = true;
+  // A closed child session must never reopen the parent dashboard. Route to
+  // the protected PIN screen first; only the parent can continue afterward.
+  if (localStorage.getItem(CHILD_ACTIVE_KEY) === '1' && isHome()) {
     const restoreButton = document.createElement('button');
     restoreButton.type = 'button';
-    restoreButton.dataset.route = 'play';
+    restoreButton.dataset.route = 'child-access';
     restoreButton.hidden = true;
     app.appendChild(restoreButton);
     restoreButton.click();
