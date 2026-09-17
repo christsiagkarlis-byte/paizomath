@@ -68,15 +68,18 @@
     const target = event.target instanceof Element
       ? event.target.closest('[data-game-exit]')
       : null;
-    if (!target) return;
-    event.preventDefault();
-    event.stopImmediatePropagation();
-    exitToHome();
+    if (target) {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      exitToHome();
+      return;
+    }
+
+    // The main app renders the game after handling the profile tap. Run the
+    // child-mode decoration after that render without observing every DOM
+    // mutation, which is safer on slower mobile browsers.
+    window.setTimeout(applyChildGameMode, 0);
   }, true);
 
-  new MutationObserver(applyChildGameMode).observe(app, {
-    childList: true,
-    subtree: true,
-  });
   applyChildGameMode();
 })();
