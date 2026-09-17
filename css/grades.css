@@ -37,3 +37,23 @@
 }
 @media (max-width: 800px) { .grade-options { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 @media (max-width: 430px) { .grade-options { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+/* v51 APK-parity family and age adaptation panel */
+.paizomath-family-panel { margin: 1rem auto 1.25rem; max-width: 1100px; padding: 1rem 1.15rem; border: 1px solid rgba(22,75,82,.16); border-radius: 18px; background: #fffdf7; box-shadow: 0 8px 24px rgba(22,75,82,.08); color: #173f45; }
+.paizomath-family-panel strong { font-size: 1.05rem; }
+.paizomath-family-panel p { margin: .35rem 0 .75rem; color: #52666a; }
+.paizomath-family-fields { display: flex; flex-wrap: wrap; gap: .65rem; align-items: end; }
+.paizomath-family-fields label { display: grid; gap: .25rem; font-size: .82rem; font-weight: 700; }
+.paizomath-family-fields input { min-height: 2.35rem; padding: .45rem .65rem; border: 1px solid #cbdcdf; border-radius: 9px; background: #fff; color: #173f45; }
+.paizomath-family-fields button { min-height: 2.35rem; padding: .45rem .85rem; border: 0; border-radius: 9px; background: #164b52; color: white; font-weight: 800; cursor: pointer; }
+.paizomath-family-fields button:active { transform: scale(.97); }
+.paizomath-family-panel small { display: block; margin-top: .7rem; color: #66777a; }
+@media (max-width: 640px) { .paizomath-family-fields { display: grid; grid-template-columns: 1fr 1fr; } .paizomath-family-fields label:first-child { grid-column: 1 / -1; } .paizomath-family-fields button { grid-column: 1 / -1; } }
+
+.paizomath-first-aid-disclaimer { margin: 1.25rem auto 2rem; max-width: 1100px; padding: 1.15rem 1.25rem; border: 1px solid #e7b1b7; border-left: 6px solid #d84b57; border-radius: 16px; background: #fff8f8; color: #4f252b; box-shadow: 0 8px 22px rgba(120,32,45,.08); }
+.paizomath-first-aid-disclaimer h2 { margin: 0 0 .65rem; color: #9b3340; font-size: 1.2rem; }
+.paizomath-first-aid-disclaimer h3 { margin: .9rem 0 .35rem; font-size: 1rem; color: #74313a; }
+.paizomath-first-aid-disclaimer p { margin: .45rem 0; line-height: 1.55; }
+.paizomath-first-aid-disclaimer .paizomath-emergency { padding: .65rem .8rem; border-radius: 10px; background: #ffe2e5; color: #8e1f2d; font-size: 1.05rem; }
+.paizomath-first-aid-disclaimer ul { margin: .3rem 0 0; padding-left: 1.25rem; line-height: 1.65; }
+.paizomath-first-aid-disclaimer a { color: #164b52; font-weight: 700; }
