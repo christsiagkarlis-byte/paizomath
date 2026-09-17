@@ -1,4 +1,4 @@
-const CACHE = "paizomath-portable-v51";
+const CACHE = "paizomath-portable-v52";
 const CORE = [
   "./",
   "./index.html",
@@ -9,11 +9,14 @@ const CORE = [
   "./css/intro-safe.css",
   "./js/app.js",
   "./js/child-game-mode.js",
+  "./js/pwa-install.js",
   "./js/protection.js",
   "./js/update-manager.js",
   "./manifest.webmanifest",
   "./audio/paizomath-presentation-bed.mp3",
   "./images/paizo-logo.png",
+  "./images/paizo-logo-192.png",
+  "./images/paizo-logo-512.png",
 ];
 
 self.addEventListener("install", (event) => {
