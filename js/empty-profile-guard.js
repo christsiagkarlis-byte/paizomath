@@ -32,7 +32,7 @@
     const message = document.createElement('div');
     message.dataset.emptyProfileMessage = 'true';
     message.className = 'empty-profile-message';
-    message.innerHTML = `<strong>${english ? 'No child profile yet' : 'Δεν υπάρχει ακόμη παιδικό προφίλ'}</strong><p>${english ? 'The parent must add the child’s name before the game can start.' : 'Ο γονέας πρέπει να προσθέσει το όνομα του παιδιού πριν ξεκινήσει το παιχνίδι.'}</p><button type="button" class="button coral" data-route="parent">${english ? 'Go to parent management' : 'Μετάβαση στη διαχείριση γονέα'}</button>`;
+    message.innerHTML = `<strong>${english ? 'No child profile yet' : 'Δεν υπάρχει ακόμη παιδικό προφίλ'}</strong><p>${english ? 'The parent must add the child’s name before the game can start.' : 'Ο γονέας πρέπει να προσθέσει το όνομα του παιδιού πριν ξεκινήσει το παιχνίδι.'}</p><button type="button" class="button coral" data-route="parents">${english ? 'Go to parent management' : 'Μετάβαση στη διαχείριση γονέα'}</button>`;
     picker.appendChild(message);
   };
   window.setTimeout(renderEmpty, 0);

@@ -1,4 +1,4 @@
-const CACHE = "paizomath-portable-v79";
+const CACHE = "paizomath-portable-v80";
 const CORE = [
   "./",
   "./index.html",
