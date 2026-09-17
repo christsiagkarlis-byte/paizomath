@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PaizoMath approved curriculum question",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "topic", "grade", "language", "unit", "difficulty", "prompt", "choices", "correct", "explanation", "source", "status"],
+  "properties": {
+    "id": {"type": "string", "pattern": "^[a-z][a-z0-9-]+$"},
+    "topic": {"type": "string", "enum": ["math", "knowledge", "language", "science", "history", "geography", "technology", "arts", "english", "religion", "physical", "civics", "skills", "finance", "digitalSafety", "digitalWallet", "cyberSafety", "aiLiteracy", "greenTech", "gymnasium", "firstAid"]},
+    "grade": {"type": "string", "enum": ["kindergarten", "primary-1", "primary-2", "primary-3", "primary-4", "primary-5", "primary-6", "gymnasium-1", "gymnasium-2", "gymnasium-3"]},
+    "language": {"type": "string", "enum": ["el", "en"]},
+    "unit": {"type": "string", "minLength": 3},
+    "difficulty": {"type": "string", "enum": ["introductory", "core", "advanced"]},
+    "prompt": {"type": "string", "minLength": 10},
+    "choices": {"type": "array", "minItems": 4, "maxItems": 4, "items": {"type": "string", "minLength": 1}},
+    "correct": {"type": "string", "minLength": 1},
+    "explanation": {"type": "string", "minLength": 10},
+    "source": {
+      "type": "object", "additionalProperties": false, "required": ["authority", "title", "url", "accessed"],
+      "properties": {"authority": {"type": "string"}, "title": {"type": "string"}, "url": {"type": "string", "format": "uri"}, "accessed": {"type": "string", "format": "date"}}
+    },
+    "status": {"type": "string", "enum": ["draft", "review", "approved", "rejected"]}
+  }
+}

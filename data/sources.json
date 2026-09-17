@@ -1,0 +1,9 @@
+{
+  "policy": "Sources are shown only in the parent management area. The app must not claim Ministry approval for PaizoMath questions; it may state that a question is aligned with the cited curriculum or textbook.",
+  "authorities": [
+    {"id": "iep-curriculum", "authority": "Ινστιτούτο Εκπαιδευτικής Πολιτικής (ΙΕΠ)", "title": "Νέα Προγράμματα Σπουδών", "url": "https://www.iep.edu.gr/nea-programmata-spoudon/"},
+    {"id": "ebooks-by-grade", "authority": "Υπουργείο Παιδείας / ebooks.edu.gr", "title": "Διαδραστικά Σχολικά Βιβλία — Υλικό ανά τάξη", "url": "https://ebooks.edu.gr/ebooks/v2/class-main.jsp?classcode=K06"},
+    {"id": "iep-religion", "authority": "Ινστιτούτο Εκπαιδευτικής Πολιτικής (ΙΕΠ)", "title": "Νέα Προγράμματα Σπουδών στα Θρησκευτικά", "url": "https://www2.iep.edu.gr/el/nea-programmata-spoudon-sta-thriskeftika"}
+  ],
+  "grades": ["kindergarten", "primary-1", "primary-2", "primary-3", "primary-4", "primary-5", "primary-6", "gymnasium-1", "gymnasium-2", "gymnasium-3"]
+}
