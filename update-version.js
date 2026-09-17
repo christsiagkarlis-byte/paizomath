@@ -2,7 +2,7 @@
   'use strict';
 
   // Change this value on every new deployment.
-  const APP_VERSION = '2026.09.17.20';
+  const APP_VERSION = '2026.09.17.30';
   const VERSION_KEY = 'paizomath.last-seen-version';
   const DISMISSED_KEY = 'paizomath.dismissed-update-version';
 

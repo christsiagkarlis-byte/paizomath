@@ -7,6 +7,7 @@
   let parentLandingMode = false;
   const app = document.getElementById('app');
   const PARENT_EXIT_KEY = 'paizomath.parent-pin-request';
+  const isEnglish = () => localStorage.getItem('paizomath.portable.language.v3') === 'en';
 
   window.addEventListener('beforeinstallprompt', (event) => {
     event.preventDefault();
@@ -40,6 +41,12 @@
       || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
     const isFirefox = /Firefox/i.test(ua);
     const isAndroid = /Android/i.test(ua);
+    if (isEnglish()) {
+      if (isIOS) return 'In Safari: Share (□↑) → Add to Home Screen → Add.';
+      if (isAndroid && isFirefox) return 'In Firefox: ⋮ → Install or Add to Home screen → Add.';
+      if (isAndroid) return 'In Chrome: ⋮ → Add to Home screen → Add. This is not an APK.';
+      return 'In your browser: page menu → Install app or Add to Home screen.';
+    }
     if (isIOS) return 'Σε Safari: Κοινοποίηση (□↑) → Προσθήκη στην οθόνη Αφετηρίας → Προσθήκη.';
     if (isAndroid && isFirefox) return 'Σε Firefox: ⋮ → Εγκατάσταση ή Προσθήκη στην αρχική οθόνη → Προσθήκη.';
     if (isAndroid) return 'Σε Chrome: ⋮ → Προσθήκη στην αρχική οθόνη → Προσθήκη. Δεν είναι APK.';
@@ -59,7 +66,12 @@
     if (!host) return;
     const panel = document.createElement('section');
     panel.className = 'pwa-install-panel';
-    panel.innerHTML = `
+    panel.innerHTML = isEnglish() ? `
+      <strong>Parent: add the shortcut to the device</strong>
+      <p>This is not an APK. It is the offline app on the Home Screen.</p>
+      <button type="button" class="button coral" data-pwa-install>Add to Home Screen</button>
+      <small data-pwa-install-help hidden></small>
+    ` : `
       <strong>Γονέας: βάλε τη συντόμευση στο κινητό</strong>
       <p>Δεν είναι APK. Είναι η offline εφαρμογή στην αρχική οθόνη.</p>
       <button type="button" class="button coral" data-pwa-install>Προσθήκη στην αρχική οθόνη</button>
@@ -79,12 +91,14 @@
       }
       button.hidden = true;
       help.hidden = false;
-      help.textContent = `${installInstructions()} Μετά άνοιξε τη συντόμευση από την αρχική οθόνη.`;
+      help.textContent = isEnglish()
+        ? `${installInstructions()} Then open the shortcut from the Home Screen.`
+        : `${installInstructions()} Μετά άνοιξε τη συντόμευση από την αρχική οθόνη.`;
     });
   };
 
   const showParentLanding = () => {
-    if (!app || !isParentPickerScreen()) return;
+    if (!app || !isParentPickerScreen() || !app.querySelector('[data-select-profile]')) return;
     unlockedPickerMarkup = app.innerHTML;
     parentLandingMode = true;
     const homeButton = document.createElement('button');
@@ -113,7 +127,8 @@
     }
 
     window.setTimeout(() => {
-      if (isParentPickerScreen() && !parentLandingMode && !unlockedPickerMarkup
+      if (isParentPickerScreen() && app.querySelector('[data-select-profile]')
+        && !parentLandingMode && !unlockedPickerMarkup
         && !app.querySelector('#unlock-child-access')) {
         showParentLanding();
       } else {
@@ -125,7 +140,8 @@
   // The PIN handler finishes by rendering the unlocked child picker. Replace
   // that first unlocked render with the parent landing screen.
   window.setTimeout(() => {
-    if (isParentPickerScreen() && !parentLandingMode && !unlockedPickerMarkup
+    if (isParentPickerScreen() && app.querySelector('[data-select-profile]')
+      && !parentLandingMode && !unlockedPickerMarkup
       && app.querySelector('#unlock-child-access')) {
       const pinButton = app.querySelector('#unlock-child-access');
       if (pinButton) {

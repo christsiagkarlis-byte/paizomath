@@ -521,3 +521,19 @@ body.child-game-mode .quiz-header > .child-exit-control {
 body.answer-celebration .question-card.answered-correct {
   animation: answerCelebration .65s ease-out;
 }
+
+.parent-stats-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+@media (max-width: 620px) {
+  .parent-stats-actions {
+    justify-content: flex-start;
+  }
+  .parent-stats-actions .button {
+    width: 100%;
+  }
+}

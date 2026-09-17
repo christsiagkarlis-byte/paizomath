@@ -15,6 +15,8 @@
   const isGamePage = () => Boolean(
     app?.querySelector('.app-shell, .quiz-page, .result-page'),
   );
+  const exitLabel = () => localStorage.getItem('paizomath.portable.language.v3') === 'en'
+    ? 'Exit' : 'Έξοδος';
 
   const exitApplication = () => {
     if (exiting) return;
@@ -50,16 +52,16 @@
     const desktopBrand = app.querySelector('.bar .brand');
     if (desktopBrand && !desktopBrand.matches('[data-game-exit="true"]')) {
       desktopBrand.classList.add('child-exit-control');
-      desktopBrand.setAttribute('aria-label', 'Έξοδος');
-      desktopBrand.innerHTML = '<span>Έξοδος</span>';
+      desktopBrand.setAttribute('aria-label', exitLabel());
+      desktopBrand.innerHTML = `<span>${exitLabel()}</span>`;
       desktopBrand.dataset.gameExit = 'true';
     }
 
     const quizExit = app.querySelector('.quiz-header > button:first-child');
     if (quizExit && !quizExit.matches('[data-game-exit="true"]')) {
       quizExit.classList.add('child-exit-control');
-      quizExit.textContent = 'Έξοδος';
-      quizExit.setAttribute('aria-label', 'Έξοδος');
+      quizExit.textContent = exitLabel();
+      quizExit.setAttribute('aria-label', exitLabel());
       quizExit.dataset.gameExit = 'true';
       quizExit.removeAttribute('data-route');
     }
@@ -103,6 +105,10 @@
       if (app?.contains(profile) && isChildPicker()) profile.click();
     }, 180);
   }, true);
+
+  // The old build used this session key to restore the child menu directly.
+  // Remove it so an old Android session can never bypass the parent PIN.
+  sessionStorage.removeItem(CHILD_SESSION_KEY);
 
   // A closed child session must never reopen the parent dashboard. Route to
   // the protected PIN screen first; only the parent can continue afterward.
