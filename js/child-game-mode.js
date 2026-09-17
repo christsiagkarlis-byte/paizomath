@@ -15,27 +15,23 @@
     app?.querySelector('.app-shell, .quiz-page, .result-page'),
   );
 
-  const exitToHome = () => {
+  const exitApplication = () => {
     if (exiting) return;
     exiting = true;
     sessionStorage.removeItem(CHILD_SESSION_KEY);
     document.body.classList.remove('child-game-mode');
 
-    // Reuse the application's own route handling so the current session and
-    // offline state remain intact. The temporary button is only a bridge for
-    // the quiz screen, which otherwise has no Home route button.
-    const homeButton = document.createElement('button');
-    homeButton.type = 'button';
-    homeButton.dataset.route = 'home';
-    homeButton.hidden = true;
-    app?.appendChild(homeButton);
-    homeButton.click();
-    homeButton.remove();
-
-    window.setTimeout(() => {
-      exiting = false;
-      childGameMode = false;
-    }, 0);
+    // Return directly to the protected parent PIN screen. Do not expose the
+    // public Home screen or the presentation to the child after Exit.
+    const pinButton = document.createElement('button');
+    pinButton.type = 'button';
+    pinButton.dataset.route = 'child-access';
+    pinButton.hidden = true;
+    app?.appendChild(pinButton);
+    pinButton.click();
+    pinButton.remove();
+    childGameMode = false;
+    exiting = false;
   };
 
   const applyChildGameMode = () => {
@@ -78,7 +74,7 @@
     if (target) {
       event.preventDefault();
       event.stopImmediatePropagation();
-      exitToHome();
+      exitApplication();
       return;
     }
 
